@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #83bd81;
+  --primary-dark: #6aaa68;
+  --primary-light: #c5e0c4;
+  --dark: #404e5e;
+  --dark-mid: #5a6a7e;
+  --cream: #fafaf8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  background-color: #fafaf8;
+  color: #404e5e;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #83bd81;
+  color: #fff;
+}
+
+/* Pleat Pattern */
+.pleat-bg {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 38px,
+    rgba(131, 189, 129, 0.07) 38px,
+    rgba(131, 189, 129, 0.07) 40px
+  );
+}
+
+/* Diagonal section divider */
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+.clip-diagonal-reverse {
+  clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Fold corner card */
+.fold-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(225deg, #f2f9f2 50%, #83bd81 50%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f4f2;
+}
+::-webkit-scrollbar-thumb {
+  background: #83bd81;
+  border-radius: 3px;
+}
+
+/* Fabric stripe decoration */
+.fabric-stripe {
+  background: repeating-linear-gradient(
+    180deg,
+    transparent,
+    transparent 10px,
+    rgba(131, 189, 129, 0.15) 10px,
+    rgba(131, 189, 129, 0.15) 12px
+  );
+}
+
+/* Green underline heading */
+.heading-underline {
+  position: relative;
+  display: inline-block;
+}
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 60px;
+  height: 3px;
+  background: #83bd81;
+  border-radius: 2px;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+/* Pleat wave animation */
+@keyframes pleatWave {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.96); }
+}
+
+/* Section appear */
+@keyframes sectionReveal {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Badge pulse */
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(131,189,129,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(131,189,129,0); }
+}
+.badge-pulse { animation: badgePulse 2.4s infinite; }
+
+/* Number counter decoration */
+.section-number {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(5rem, 12vw, 10rem);
+  font-weight: 700;
+  color: rgba(131,189,129,0.08);
+  position: absolute;
+  right: -10px;
+  top: -30px;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* CTA hover */
+.btn-primary {
+  @apply inline-flex items-center gap-2 bg-primary text-white font-semibold rounded-lg px-6 py-3 transition-all duration-300;
+  font-family: var(--font-jakarta), sans-serif;
+}
+.btn-primary:hover {
+  background: #6aaa68;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(131,189,129,0.35);
+}
+
+.btn-dark {
+  @apply inline-flex items-center gap-2 bg-dark text-white font-semibold rounded-lg px-6 py-3 transition-all duration-300;
+  font-family: var(--font-jakarta), sans-serif;
+}
+.btn-dark:hover {
+  background: #333f4d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(64,78,94,0.35);
+}
+
+/* Mobile safe area */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mobile-bar {
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Table styles */
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.content-table th {
+  background: #404e5e;
+  color: #fff;
+  padding: 10px 14px;
+  text-align: left;
+  font-family: var(--font-jakarta), sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+.content-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e8e8e6;
+  font-size: 0.88rem;
+}
+.content-table tr:nth-child(even) td {
+  background: #f9f9f7;
+}
+.content-table tr:hover td {
+  background: #f2f9f2;
+}
